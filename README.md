@@ -71,7 +71,7 @@ const sendGridAPIKey = process.env.Send
 ```
 
 ### Steps -8
-### Creating an Object and add the required datas as key value pair
+### Creating an Object and add the required data as key value pair
 ```
 const obj = {
     subject: "Ananthu-Sendgrid template demo",
