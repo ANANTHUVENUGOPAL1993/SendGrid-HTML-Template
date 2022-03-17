@@ -53,7 +53,7 @@ npm install dotenv
 ### Steps -5
 ### Create a .env file in the folder and set the sendgrid api.
 ```
-Send=*****your api key********************* 
+Send=*********API-key******************
 ```
 ### Steps -6
 ### Import all the dependencies to the file service.js 
