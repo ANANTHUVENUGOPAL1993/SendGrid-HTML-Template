@@ -1,21 +1,44 @@
 const axios = require('axios');
+const dotenv = require("dotenv")
+dotenv.config();
+const sendGridAPIKey = process.env.Send
 
 const obj = {
     subject: "Ananthu-Sendgrid template demo",
-    heading: "Welcome to My Portfolio ",
-    description:
-        "Hi, Iam Ananthu Venugopal . Iam a Developer and a Composer ",
-    image: "https://i.ibb.co/hKDqcmr/Myportfolio.png"
+    heading: "Welcome to AVG",
+    greeting:
+        "Hi sooraj,",
+        description:"Thank you for your interest in AVG.Please confirm your mail.",
+        button:"Confirm Mail",
+        acknowledgment:"Regards,",
+        name:"AVG Team",
+        
+  
 };
 let htmlTemplate = `
  <!DOCTYPE html>
  <html>
  <body>
+
  <h1>${obj.heading}</h1>
 
- <img src=${obj.image} alt="Sendgrid" style="width:400px;height:200px;border:0"
+ <hr style="width:100%;text-align:left;margin-left:0">
+
+
+
+ <p>${obj.greeting}</p>
 
  <p>${obj.description}</p>
+
+ <button style=" color: white;
+ border-radius: 4px;
+ text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+ background: rgb(223, 117, 20);" >${obj.button} </button>
+ 
+ <p>${obj.acknowledgment}</p>
+ <p>${obj.name}</p>
+
+
  </body>
  </html>
  
@@ -27,7 +50,7 @@ const callMethod = () => {
         url: "https://api.sendgrid.com/v3/mail/send",
         headers: {
             Authorization:
-                "Bearer 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"
+                `Bearer ${sendGridAPIKey} `
         },
         data: {
             personalizations: [
@@ -35,22 +58,22 @@ const callMethod = () => {
                     to: [
                         {
                             email: "ananthuvenugopal3@gmail.com",
-                            //   name:"ananthu"
+                           // name:"ananthu "
 
                         },
                         {
                             email: "ananthu.venugopal@urolime.com",
-                            //  name:"ananthu"
+                            name:"Ananthu Venugopal"
 
                         },
-
+                      
                     ],
                     subject: `${obj.subject}`
                 }
             ],
             from: {
                 email: "ananthu.venugopal@urolime.com",
-                name: "ananthu"
+                name: "Ananthu Venugopal"
             },
             content: [{ type: "text/html", value: htmlTemplate }]
         }
